@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,6 +35,20 @@ class AuthController extends Controller
         return redirect()->back()->withErrors(['email' => 'Invalid Credentials']);
     }    
 
+    public function register(){
+        $data = request()->validate([
+            'firstname' => ['required', 'string'],
+            'lastname' => ['required', 'string'],
+            'email' => ['required', 'string'],
+            'phone' => ['required', 'string'],
+            'address' => ['required', 'string'],
+            'password' => ['required', 'string']
+        ]);
+
+        User::create($data);
+    
+        return redirect('/signup')->with('status', 'Registration successful');    
+    }
     public function logout(){
         auth()->logout();
 

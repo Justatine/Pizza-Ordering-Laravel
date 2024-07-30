@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Products;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -19,6 +20,27 @@ return new class extends Migration
             $table->enum('status', ['Available', 'Not available'])->default("Not available");
             $table->timestamps();
         });
+
+        Products::insert([
+            [
+                'name' => 'Hawaian Delight',
+                'price' => 100,
+                'created_at' => now(),
+                'updated_at' => now()   
+            ],
+            [
+                'name' => 'Bacon and Cheese',
+                'price' => 125,
+                'created_at' => now(),
+                'updated_at' => now()            
+            ],
+            [
+                'name' => 'Pepperoni',
+                'price' => 150,
+                'created_at' => now(),
+                'updated_at' => now()   
+            ]
+        ]);
     }
 
     /**

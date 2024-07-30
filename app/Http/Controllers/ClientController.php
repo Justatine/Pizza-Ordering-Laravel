@@ -25,4 +25,7 @@ class ClientController extends Controller
     public function signin(){
         return view('auth.signin');
     }
+    public function signup(){
+        return view('auth.signup');
+    }
 }
