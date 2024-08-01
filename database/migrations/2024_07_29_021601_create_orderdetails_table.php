@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Orderdetails;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -31,6 +32,19 @@ return new class extends Migration
             ->on('products')
             ->onDelete('cascade');
         });
+
+        Orderdetails::insert([
+            [
+                'orderId' => 1,
+                'productId' => 1,
+                'price' => 100,
+                'quantity' => 2,
+                'size' => 'Small',
+                'subtotal' => 200,
+                'created_at' => now(),
+                'updated_at' => now()   
+            ]
+        ]);
     }
 
     /**

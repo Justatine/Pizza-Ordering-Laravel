@@ -21,9 +21,11 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
-    Route::get('/index', [AdminController::class, '__invoke']);
+    Route::get('/', [AdminController::class, '__invoke']);
     Route::get('/products', [AdminController::class, 'products']);
     Route::get('/users', [AdminController::class, 'users']);
+    Route::get('/orders', [AdminController::class, 'orders']);
+    Route::get('/profile', [ClientController::class, 'profile']);
 
     // Users
     Route::get('/users/new', [UserController::class, 'newUser']);

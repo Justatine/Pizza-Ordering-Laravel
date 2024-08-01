@@ -10,13 +10,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Orderdetails extends Model
 {
     use HasFactory;
-    protected $guarded = ['detailId', 'orderId', 'productId', 'quantity', 'price', 'size', 'subtotal', 'created_at', 'updated_at'];
+    protected $primaryKey = 'detailId';
+    protected $fillable = ['orderId', 'productId', 'quantity', 'price', 'size', 'subtotal'];
+    protected $guarded = [];
 
-    public function orders() {
-        return $this->belongsTo(Orders::class);
+    public function order() {
+        return $this->belongsTo(Orders::class, 'orderId', 'orderId');
     }
       
-      public function products() {
-        return $this->belongsTo(Products::class);
+    public function product() {
+        return $this->belongsTo(Products::class, 'productId', 'productId');
     }
 }

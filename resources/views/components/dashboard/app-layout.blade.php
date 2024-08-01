@@ -140,14 +140,14 @@
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin/orders') }}"
                                 aria-expanded="false">
                                 <i class="fa fa-reorder" aria-hidden="true"></i>
                                 <span class="hide-menu">Orders</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="profile.html"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin/profile') }}"
                                 aria-expanded="false">
                                 <i class="far fa-user-circle" aria-hidden="true"></i>
                                 <span class="hide-menu">Profile</span>
