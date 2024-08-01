@@ -25,8 +25,9 @@
                     </div>
 
                     <div class="site-section w-100 mt-5" data-aos="fade-up" data-aos-delay="0.3s">
-                        <form class="py-5 px-5 border" method="POST" action="{{ url('/admin/products/new/store') }}" enctype="multipart/form-data">
+                        <form class="py-5 px-5 border" method="POST" action="{{ url('/admin/products/'.$products->productId) }}" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-md-12 form-group">
                                     @if ($errors->any())
@@ -45,21 +46,22 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="name">Pizza: </label>
-                                        <input type="text" name="name" id="pizza" class="form-control" placeholder="Enter pizza name" required>
+                                        <input type="text" name="name" id="pizza" class="form-control" placeholder="Enter pizza name" value="{{ $products->name }}" required>
                                     </div>
                         
                                     <div class="form-group">
                                         <label for="price">Price: </label>
-                                        <input type="number" name="price" id="price" class="form-control" placeholder="Enter price" step="any" min="1" required>
+                                        <input type="number" name="price" id="price" class="form-control" placeholder="Enter price" step="any" min="1" value="{{ $products->price }}" required>
                                     </div>
                         
                                     <div class="form-group">
                                         <label for="status">Availability: </label>
                                         <select name="status" id="status" class="form-control" required>
-                                            <option value="Not available" class="text-danger">Not available</option>
-                                            <option value="Available" class="text-success">Available</option>
+                                            <option value="Not available" class="text-danger" {{ $products->status == 'Not available' ? 'selected' : '' }}>Not available</option>
+                                            <option value="Available" class="text-success" {{ $products->status == 'Available' ? 'selected' : '' }}>Available</option>
                                         </select>
                                     </div>
+                                    
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
@@ -69,7 +71,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group row">
                                                 <div id="imageContainer" class="border">
-                                                    <img id="selectedImage" src="/images/default.png" alt="Selected Image">
+                                                    <img id="selectedImage" src="/images/products/{{ $products->image == null ? 'default.png' : $products->image }}" alt="Selected Image">
                                                 </div>
                                             </div>
                                         </div>

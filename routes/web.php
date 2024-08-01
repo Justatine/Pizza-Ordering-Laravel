@@ -23,6 +23,10 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/products', [AdminController::class, 'products']);
     Route::get('/products/new', [AdminController::class, 'newProduct']);
     Route::post('/products/new/store', [AdminController::class, 'storeProduct']);
+    Route::delete('/products/{product}', [AdminController::class, 'deleteProduct']);
+    Route::get('/products/{product}', [AdminController::class, 'editProduct']);
+    Route::put('/products/{product}', [AdminController::class, 'updateProduct']);
+
 });
 
 Route::prefix('incharge')->middleware(['auth', 'is_incharge'])->group(function () {

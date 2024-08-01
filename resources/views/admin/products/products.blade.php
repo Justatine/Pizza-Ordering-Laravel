@@ -17,7 +17,7 @@
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="white-box">
                         @if (session('status'))
-                            <div class="alert alert-success p-3" role="alert">
+                            <div class="alert alert-success" role="alert">
                                 <p class="font-bold">{{session('status')}}</p>
                             </div>
                         @endif
@@ -45,22 +45,24 @@
                                     @foreach ($products as $product)
                                         <tr>
                                             <td>{{ $product->productId }}</td>
-                                            <td class="txt-oflo">Image Preview</td>
+                                            <td class="txt-oflo">
+                                                <img src="/images/products/{{ $product->image ?? 'default.png' }}" alt="" style="height: 50px; width: 50px; object-fit: cover; object-position: center; border-radius: 5px;" class="border">
+                                            </td>
                                             <td>{{ $product->name }}</td>
                                             <td><span class="text-success">${{ $product->price }}</span></td>
                                             <td><span class="text-danger">{{ $product->status }}</span></td>
                                             <td class="d-md-flex align-items-center justify-content-center gap-2">
-                                                <a href="{{'/product/'.$product->productId}}">
+                                                <a href="{{'/admin/products/'.$product->productId}}">
                                                     <button class="btn btn-primary">Update</button>
                                                 </a>
 
-                                                <form action="{{ url('/product/'.$product->productId) }}" method="POST" class="inline-block">
+                                                <form action="{{ url('/admin/products/'.$product->productId) }}" method="POST" class="inline-block">
                                                     @method('DELETE')
                                                     @csrf
-                                                    <button type="submit" class="btn btn-danger">
+                                                    <button type="button" class="btn btn-danger delete-btn" value="{{ $product->productId }}">
                                                         Delete
                                                     </button>
-                                                </form>
+                                                </form>                                                
                                             </td> 
                                         </tr>
                                     @endforeach
@@ -76,4 +78,26 @@
             href="https://www.wrappixel.com/">wrappixel.com</a>
         </footer>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.delete-btn').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    Swal.fire({
+                        title: "CONFIRM",
+                        text: "Are you sure to delete this Product?",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        confirmButtonText: "Yes, proceed"
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var deleteValue = this.value;
+                            this.closest('form').submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 </x-dashboard.app-layout>
