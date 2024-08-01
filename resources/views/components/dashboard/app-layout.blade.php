@@ -15,6 +15,21 @@
     <link href="{{ asset('dashboard_components/plugins/bower_components/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dashboard_components/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}">
     <link href="{{ asset('dashboard_components/css/style.min.css') }}" rel="stylesheet">
+    <style>
+        #imageContainer {
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            /* margin: 0 auto;  */
+            border: 1px solid black;
+        }
+    
+        #selectedImage, #selectedImage1 {
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+    </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 </head>
 <body>
@@ -189,6 +204,7 @@
     <script src="{{ asset('dashboard_components/plugins/bower_components/chartist/dist/chartist.min.js') }}"></script>
     <script src="{{ asset('dashboard_components/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js') }}"></script>
     <script src="{{ asset('dashboard_components/js/pages/dashboards/dashboard1.js') }}"></script>
+    <script src="{{ asset('js/sweetalert2@11.js') }}"></script>
 
 </body>
 </html>
