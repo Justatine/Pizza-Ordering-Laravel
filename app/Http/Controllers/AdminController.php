@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Orders;
 use App\Models\Products;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -9,9 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class AdminController extends Controller
 {
     public function __invoke(){
+        $productCount = Products::count();
+        $usersCount = User::count();
+        $ordersCount = Orders::count();
+
         return view('admin.index', [
-            'user' => auth()->user()]
-        );
+            'user' => auth()->user(),
+            'products_count' => $productCount,
+            'users_count' => $usersCount,
+            'orders_count' => $ordersCount
+        ]);
     }
     public function products(){
         $user = Auth::user();

@@ -34,7 +34,7 @@
                                         style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                 </div>
                             </li>
-                            <li class="ms-auto"><span class="counter text-success">659</span></li>
+                            <li class="ms-auto"><span class="counter text-success">{{ $users_count }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                                         style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                 </div>
                             </li>
-                            <li class="ms-auto"><span class="counter text-purple">869</span></li>
+                            <li class="ms-auto"><span class="counter text-purple">{{ $products_count }}</span></li>
                         </ul>
                     </div>
                 </div>
@@ -60,7 +60,7 @@
                                         style="display: inline-block; width: 67px; height: 30px; vertical-align: top;"></canvas>
                                 </div>
                             </li>
-                            <li class="ms-auto"><span class="counter text-info">911</span>
+                            <li class="ms-auto"><span class="counter text-info">{{ $orders_count }}</span>
                             </li>
                         </ul>
                     </div>
