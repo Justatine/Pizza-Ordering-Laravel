@@ -22,11 +22,11 @@ class AuthController extends Controller
             $user = auth()->user();
             switch ($user->role) {
                 case 'Admin':
-                    return redirect('/admin/index');
+                    return redirect('/admin');
                 case 'Incharge':
-                    return redirect('/incharge/index');
+                    return redirect('/incharge');
                 case 'Customer':
-                    return redirect('/student/index');
+                    return redirect('/student');
                 default:
                     return redirect('/');
             }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -27,5 +28,12 @@ class ClientController extends Controller
     }
     public function signup(){
         return view('auth.signup');
+    }
+
+    public function profile(){
+        $users = Auth::user();
+        return view('admin.my-profile', [
+            'users' => $users
+        ]);
     }
 }
