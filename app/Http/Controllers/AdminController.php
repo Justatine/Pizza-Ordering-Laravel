@@ -41,7 +41,7 @@ class AdminController extends Controller
     }
     public function orders(){
         $user = Auth::user();
-        $orders = Orders::with(['orderdetails.product'])->get();
+        $orders = Orders::with(['orderdetails.product', 'user'])->get();
     
         return view('admin.orders.orders', [
             'user' => $user,

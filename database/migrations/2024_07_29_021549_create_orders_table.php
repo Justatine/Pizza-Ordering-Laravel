@@ -29,7 +29,7 @@ return new class extends Migration
         Orders::insert([
             [
                 'userId' => 2,
-                'total' => 200,
+                'total' => 500,
                 'status' => 'Pending',
                 'dateordered' => now(),
                 'created_at' => now(),

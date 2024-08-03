@@ -31,27 +31,30 @@
                                         <th class="border-top-0">Customer</th>
                                         <th class="border-top-0">Delivery Address</th>
                                         <th class="border-top-0">Total</th>
-                                        <th class="border-top-0">Date</th>
                                         <th class="border-top-0">Date Ordered</th>
                                         <th class="border-top-0">Order Status</th>
-                                        <th class="border-top-0">Action</th>
                                         <th class="border-top-0">Order Details</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach ($orders as $order)
-                                        @foreach ($order->orderdetails as $detail)
-                                            <tr>
-                                                <td>{{ $order->orderId  }}</td>
-                                                <td>{{ $detail->product->name }}</td>
-                                                <td>3</td>
-                                                <td>4</td>
-                                                <td>5</td>
-                                                <td>6</td>
-                                                <td>7</td>
-                                                <td>8</td>
-                                            </tr>
-                                        @endforeach
+                                        <tr>
+                                            <td>{{ $order->user->firstname }} {{ $order->user->lastname }}</td>
+                                            <td>{{ $order->user->address }}</td>
+                                            {{-- <td>
+                                                @foreach ($order->orderdetails as $detail)
+                                                    {{ $detail->product->name }}<br>
+                                                @endforeach
+                                            </td> --}}
+                                            <td>₱{{ $order->total }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($order->dateordered)->format('F j, Y') }}</td>
+                                            <td>{{ $order->status }}</td>
+                                            <td>
+                                                <a href="{{ url('/admin/orders/'.$order->orderId) }}">
+                                                    <button class="btn btn-primary"><span class="fa fa-eye"></span> View</button>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
                                 </tbody>
                             </table>
