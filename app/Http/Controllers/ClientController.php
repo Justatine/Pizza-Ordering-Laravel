@@ -34,7 +34,21 @@ class ClientController extends Controller
 
     public function profile(){
         $users = Auth::user();
-        return view('admin.my-profile', [
+        $veiwpath = '';
+        switch ($users->role) {
+            case 'Admin':
+                $veiwpath = 'admin';
+                break;
+            case 'Incharge':
+                $veiwpath = 'incharge';
+                break;
+            case 'Customer':
+                $veiwpath = 'pages';
+                break;
+            default:
+            abort(403, 'Unauthorized access');
+        }
+        return view($veiwpath.'.my-profile', [
             'users' => $users
         ]);
     }

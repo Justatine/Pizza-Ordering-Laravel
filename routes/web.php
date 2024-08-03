@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UserController;
@@ -20,6 +21,11 @@ Route::get('/signup', [ClientController::class, 'signup'])->name('register');
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::middleware(['auth', 'is_customer'])->group(function () {
+    Route::get('/cart', [CartController::class, 'gotoCart']);
+    Route::get('/profile', [ClientController::class, 'profile']);
+});
 
 Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/', [AdminController::class, '__invoke']);

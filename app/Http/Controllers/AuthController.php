@@ -26,7 +26,7 @@ class AuthController extends Controller
                 case 'Incharge':
                     return redirect('/incharge');
                 case 'Customer':
-                    return redirect('/student');
+                    return redirect('/');
                 default:
                     return redirect('/');
             }
@@ -51,7 +51,7 @@ class AuthController extends Controller
     }
     public function logout(){
         auth()->logout();
-
         return redirect('/signin');
+        // return response()->json(['message' => 'Signing out...']);
     }
 }
