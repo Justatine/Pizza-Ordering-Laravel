@@ -68,6 +68,7 @@ class UserController extends Controller
             'address' => ['required', 'string'],
             'email' => ['required', 'string', 'unique:users,email,' . $user->id], 
             'password' => ['nullable', 'string'],
+            'role' => ['required', 'string'],
             'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
         ]);
     

@@ -106,9 +106,9 @@
                                         <div class="form-group">
                                             <label for="role">Role:</label>
                                             <select name="role" class="form-control w-50" required>
-                                                <option value="Customer">Customer</option>
-                                                <option value="Admin">Admin</option>
-                                                <option value="Incharge">Incharge</option>
+                                                <option {{ $users->role == 'Customer' ? 'selected' : '' }}value="Customer">Customer</option>
+                                                <option {{ $users->role == 'Admin' ? 'selected' : '' }} value="Admin">Admin</option>
+                                                <option {{ $users->role == 'Incharge' ? 'selected' : '' }} value="Incharge">Incharge</option>
                                             </select>
                                         </div>
                                     </div>

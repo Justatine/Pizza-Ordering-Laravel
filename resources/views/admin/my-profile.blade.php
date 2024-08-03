@@ -25,7 +25,7 @@
                     </div>
 
                     <div class="site-section w-100 mt-5" data-aos="fade-up" data-aos-delay="0.3s">
-                        <form class="py-5 px-5 border" method="POST" action="{{ url('/admin/users/'.$users->id) }}" enctype="multipart/form-data">
+                        <form class="py-5 px-5 border" method="POST" action="{{ url('/admin/profile/'.$users->id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <div class="row">
@@ -37,6 +37,12 @@
                                                     <li>{{ $error }}</li>
                                                 @endforeach
                                             </ul>
+                                        </div>
+                                    @endif
+
+                                    @if (session('status'))
+                                        <div class="alert alert-success" role="alert">
+                                            <p class="font-bold">{{session('status')}}</p>
                                         </div>
                                     @endif
                                 </div>
@@ -101,17 +107,6 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="row">
-                                        <div class="form-group">
-                                            <label for="role">Role:</label>
-                                            <select name="role" class="form-control w-50" required>
-                                                <option value="Customer" {{ $users->role == 'Customer' ? 'selected' : '' }}>Customer</option>
-                                                <option value="Admin" {{ $users->role == 'Admin' ? 'selected' : '' }}>Admin</option>
-                                                <option value="Incharge" {{ $users->role == 'Incharge' ? 'selected' : '' }}>Incharge</option>
-                                            </select>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="row">
@@ -121,7 +116,7 @@
                                         <div class="col-md-12">
                                             <div class="form-group row">
                                                 <div id="imageContainer" class="border">
-                                                    <img id="selectedImage" src="/images/users/{{ $users->image == null ? 'default.jpg' : $users->image }}" alt="Selected Image" style="width:100%; height: 320px;">
+                                                    <img id="selectedImage" src="/images/users/{{ $users->image == null ? 'default.jpg' : $users->image }}" alt="Selected Image" style="width:100%; height: 225px;">
                                                 </div>
                                             </div>
                                             <input type="file" name="image" id="fileInput" accept="image/*">

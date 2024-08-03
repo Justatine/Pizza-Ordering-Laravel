@@ -28,6 +28,9 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/orders', [AdminController::class, 'orders']);
     Route::get('/profile', [ClientController::class, 'profile']);
 
+    // Profile
+    Route::put('/profile/{user}', [ClientController::class, 'updateProfile']);
+
     // Orders
     Route::get('/orders/{order}', [OrderController::class, 'viewOrderdetails']);
     Route::put('/orders/updateStatus/{order}', [OrderController::class, 'updateOrderstatus']);
