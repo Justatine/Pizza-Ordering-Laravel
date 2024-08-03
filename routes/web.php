@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\InchargeController;
@@ -27,6 +28,10 @@ Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {
     Route::get('/orders', [AdminController::class, 'orders']);
     Route::get('/profile', [ClientController::class, 'profile']);
 
+    // Orders
+    Route::get('/orders/{order}', [OrderController::class, 'viewOrderdetails']);
+    Route::put('/orders/updateStatus/{order}', [OrderController::class, 'updateOrderstatus']);
+    
     // Users
     Route::get('/users/new', [UserController::class, 'newUser']);
     Route::post('/users/new/store', [UserController::class, 'storeUser']);

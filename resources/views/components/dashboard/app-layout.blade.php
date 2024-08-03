@@ -15,6 +15,7 @@
     <link href="{{ asset('dashboard_components/plugins/bower_components/chartist/dist/chartist.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('dashboard_components/plugins/bower_components/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.css') }}">
     <link href="{{ asset('dashboard_components/css/style.min.css') }}" rel="stylesheet">
+
     <style>
         #imageContainer {
             width: 100%; 
@@ -119,7 +120,7 @@
                     <ul id="sidebarnav">
                         <!-- User Profile-->
                         <li class="sidebar-item pt-2">
-                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin/index') }}"
+                            <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/admin') }}"
                                 aria-expanded="false">
                                 <i class="far fa-clock" aria-hidden="true"></i>
                                 <span class="hide-menu">Dashboard</span>
@@ -156,7 +157,7 @@
                         <li class="sidebar-item">
                             <a class="sidebar-link waves-effect waves-dark sidebar-link" href="{{ url('/logout') }}"
                                 aria-expanded="false">
-                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                                <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
                                 <span class="hide-menu">Sign out</span>
                             </a>
                         </li>
@@ -198,6 +199,7 @@
     <script src="{{ asset('dashboard_components/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('dashboard_components/js/app-style-switcher.js') }}"></script>
     <script src="{{ asset('dashboard_components/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('dashboard_components/js/waves.js') }}"></script>
     <script src="{{ asset('dashboard_components/js/sidebarmenu.js') }}"></script>
     <script src="{{ asset('dashboard_components/js/custom.js') }}"></script>

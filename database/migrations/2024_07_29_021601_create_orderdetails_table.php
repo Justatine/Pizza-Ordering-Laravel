@@ -17,7 +17,6 @@ return new class extends Migration
             $table->unsignedBigInteger('orderId');
             $table->unsignedBigInteger('productId');
             $table->integer('quantity');
-            $table->double('price');
             $table->enum('size', ['Small', 'Medium', 'Large']);
             $table->double('subtotal');
             $table->timestamps();
@@ -37,10 +36,18 @@ return new class extends Migration
             [
                 'orderId' => 1,
                 'productId' => 1,
-                'price' => 100,
                 'quantity' => 2,
                 'size' => 'Small',
                 'subtotal' => 200,
+                'created_at' => now(),
+                'updated_at' => now()   
+            ],
+            [
+                'orderId' => 1,
+                'productId' => 3,
+                'quantity' => 1,
+                'size' => 'Small',
+                'subtotal' => 300,
                 'created_at' => now(),
                 'updated_at' => now()   
             ]
