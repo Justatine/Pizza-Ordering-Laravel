@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,6 +15,15 @@ class ClientController extends Controller
     }
 
     public function menu(){
+        $user = Auth::user();
+        if (Auth::check()) {
+            $products = Products::orderByDesc('created_at')->get();
+
+            return view('pages.menu', [
+                'user' => $user,
+                'products' => $products
+            ]);        
+        }
         return view('pages.menu');
     }
     public function services(){
@@ -85,5 +95,12 @@ class ClientController extends Controller
         $user->update($data);
     
         return redirect()->back()->with('status', 'Profile updated');
+    }
+    public function productDetail($products){
+        $products = Products::find($products);
+
+        return view('pages.product-detail', [
+            'products' => $products
+        ]);
     }
 }

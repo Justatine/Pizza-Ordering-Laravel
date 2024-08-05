@@ -23,22 +23,46 @@ return new class extends Migration
 
         Products::insert([
             [
-                'name' => 'Hawaian Delight',
+                'name' => 'Italian Pizza',
+                'image' => 'pizza-1.jpg',
                 'price' => 100,
                 'created_at' => now(),
                 'updated_at' => now()   
             ],
             [
-                'name' => 'Bacon and Cheese',
+                'name' => 'Greek Pizza',
+                'image' => 'pizza-2.jpg',
                 'price' => 125,
                 'created_at' => now(),
                 'updated_at' => now()            
             ],
             [
-                'name' => 'Pepperoni',
+                'name' => 'Caucasian Pizza',
+                'image' => 'pizza-3.jpg',
                 'price' => 150,
                 'created_at' => now(),
                 'updated_at' => now()   
+            ],
+            [
+                'name' => 'American Pizza',
+                'image' => 'pizza-4.jpg',
+                'price' => 125,
+                'created_at' => now(),
+                'updated_at' => now()            
+            ],
+            [
+                'name' => 'Tomatoe Pie',
+                'price' => 125,
+                'image' => 'pizza-5.jpg',
+                'created_at' => now(),
+                'updated_at' => now()            
+            ],
+            [
+                'name' => 'Margherita',
+                'image' => 'pizza-6.jpg',
+                'price' => 125,
+                'created_at' => now(),
+                'updated_at' => now()            
             ]
         ]);
     }

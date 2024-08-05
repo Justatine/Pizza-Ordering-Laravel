@@ -21,8 +21,8 @@
 					</a>
 				</li>
 			@else
-				<li class="nav-item">
-					<a href="{{ url('/signin') }}" class="nav-link {{ Request::is('signin') ? 'active' : '' }}" ><i class="fa fa-sign-in"></i> Sign in
+				<li class="nav-item {{ Request::is('signin') ? 'active' : '' }}">
+					<a href="{{ url('/signin') }}" class="nav-link" ><i class="fa fa-sign-in"></i> Sign in
 					</a>
 				</li>
 			@endif
