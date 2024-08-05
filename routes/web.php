@@ -12,6 +12,7 @@ use App\Http\Controllers\InchargeController;
 
 Route::get('/', [ClientController::class, 'show']);
 Route::get('/menu', [ClientController::class, 'menu']);
+Route::get('/menu/{product}', [ClientController::class, 'productDetail']);
 Route::get('/services', [ClientController::class, 'services']);
 Route::get('/about', [ClientController::class, 'about']);
 Route::get('/contact', [ClientController::class, 'contact']);
@@ -25,6 +26,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::middleware(['auth', 'is_customer'])->group(function () {
     Route::get('/cart', [CartController::class, 'gotoCart']);
     Route::get('/profile', [ClientController::class, 'profile']);
+    Route::post('/addCart/{product}', [CartController::class, 'addToCart']);
 });
 
 Route::prefix('admin')->middleware(['auth', 'is_admin'])->group(function () {

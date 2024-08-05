@@ -10,7 +10,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Cart extends Model
 {
     use HasFactory;
-    protected $guarded = ['cartId', 'productId', 'userId', 'quantity', 'size', 'dateordered', 'created_at', 'updated_at'];
+    protected $fillable = ['productId', 'userId', 'quantity', 'size'];
+    protected $guarded = ['cartId'];
 
     public function user() {
         return $this->belongsTo(User::class);
